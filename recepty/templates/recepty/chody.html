@@ -1,0 +1,22 @@
+
+
+{% extends 'recepty/base.html' %}
+{% block title %}Seznam chodů{% endblock %}
+{% block body %}
+
+
+<h1>Chody:</h1>
+
+{% if all_chody %}
+    <ul>
+        {% for chod in all_chody %}
+        <li><a href="{% url 'recepty:detailchodu' chod.id %}">{{ chod.nazev }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>Nejsou články</h3>
+{% endif %}
+
+
+
+{% endblock %}

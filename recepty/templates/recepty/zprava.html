@@ -1,0 +1,18 @@
+{% extends 'recepty/base.html' %}
+{% block title %}Zanechte zprávu{% endblock %}
+{% block body %}
+
+
+<h1>Zanechejte nám zprávu</h1>
+<h5>Přípomínky, návrhy, vylepšení, kritika</h5>
+
+
+
+     <form method="POST" class="post-form">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <button type="submit" class="save btn btn-default">Odeslat</button>
+     </form>
+
+
+{% endblock %}

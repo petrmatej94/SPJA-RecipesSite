@@ -1,0 +1,23 @@
+{% extends 'recepty/base.html' %}
+{% block title %}Seznam kuchařů{% endblock %}
+{% block body %}
+
+
+<h1>Seznam jmen všech uživatelů/kuchařů</h1>
+
+{% if all_kuchari %}
+    <ul>
+        {% for kuchar in all_kuchari %}
+        {% if kuchar.is_superuser %}
+        {% else %}
+        <li><a href="{% url 'recepty:detailkuchare' kuchar.id %}">{{ kuchar.username }}</a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>Nejsou kuchaři</h3>
+{% endif %}
+
+
+
+{% endblock %}

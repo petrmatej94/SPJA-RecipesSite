@@ -1,0 +1,30 @@
+{% extends 'recepty/base.html' %}
+{% block title %}Detail kuchyně{% endblock %}
+{% block body %}
+
+
+<h1>{{ kuchyne.jmeno }}</h1>
+<li>{{ kuchyne.popis }}</li>
+<br>
+
+<h2>Seznam receptů této kuchyně:</h2>
+{% if all_recepty %}
+    <ul>
+        {% for recept in all_recepty %}
+        <li><a href="{% url 'recepty:detailreceptu' recept.id %}">{{ recept.jmeno }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>Nejsou recepty</h3>
+{% endif %}
+
+
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+
+
+
+{% endblock %}

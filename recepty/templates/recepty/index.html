@@ -1,0 +1,32 @@
+{% extends 'recepty/base.html' %}
+{% block title %}Rozcestník{% endblock %}
+{% block body %}
+
+
+
+{% if user.is_authenticated %}
+<h1>Vítejte {{ user.username }} !</h1>
+{% else %}
+  <p>Nejste přihlášený</p>
+{% endif %}
+
+
+<br>
+<h1>Rozcestník</h1>
+
+<h2><a href="kuchari">Seznam kuchařů</a></h2>
+<h2><a href="recepty">Recepty</a></h2>
+<h2><a href="svetovekuchyne">Světová kuchyně</a></h2>
+<h2><a href="ingredience">Ingredience</a></h2>
+<h2><a href="hledani">Vyhledávání receptů</a></h2>
+<h2><a href="clanky">Články</a></h2>
+<h2><a href="chody">Chody</a></h2>
+<h2><a href="">Dnešní menu</a></h2>
+
+{% if user.is_authenticated %}
+<br>
+<h2><a href="zprava">Zanechte nám zprávu</a></h2>
+{% endif %}
+
+
+{% endblock %}

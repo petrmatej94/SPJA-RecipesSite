@@ -1,0 +1,19 @@
+{% extends 'recepty/base.html' %}
+{% block title %}Světové kuchyně{% endblock %}
+{% block body %}
+
+
+<h1>Seznam světových kuchyní</h1>
+
+{% if all_kuchyne %}
+    <ul>
+        {% for kuchyne in all_kuchyne %}
+        <li><a href="{% url 'recepty:detailkuchyne' kuchyne.id %}">{{ kuchyne.jmeno }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>Nejsou kuchyně</h3>
+{% endif %}
+
+
+{% endblock %}

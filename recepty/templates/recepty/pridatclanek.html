@@ -1,0 +1,13 @@
+{% extends 'recepty/base.html' %}
+{% block title %}Přidání nového článku{% endblock %}
+
+{% block body %}
+
+     <h1>Nový článek</h1>
+     <form method="POST" class="post-form">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <button type="submit" class="save btn btn-default">Přidej článek</button>
+     </form>
+
+{% endblock %}

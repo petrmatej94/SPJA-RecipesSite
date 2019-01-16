@@ -1,0 +1,20 @@
+{% extends 'recepty/base.html' %}
+{% block title %}Seznam receptů{% endblock %}
+{% block body %}
+
+
+<h1>Seznam všech receptů</h1>
+
+{% if all_recepty %}
+    <ul>
+        {% for recept in all_recepty %}
+        <li><a href="{% url 'recepty:detailreceptu' recept.id %}">{{ recept.jmeno }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>Nejsou recepty</h3>
+{% endif %}
+
+
+
+{% endblock %}

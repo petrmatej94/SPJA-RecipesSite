@@ -1,0 +1,59 @@
+
+{% extends 'recepty/base.html' %}
+{% block title %}{{ recept.jmeno }}{% endblock %}
+{% block body %}
+
+
+<!--<img src="{{ recept.fotka }}">-->
+
+<h1>{{ recept.jmeno }}</h1>
+<h3>Světová kuchyně: <a href="{% url 'recepty:detailkuchyne' recept.svetova_kuchyne.id %}"> {{ recept.svetova_kuchyne.jmeno }}</a></h3>
+<h3>Autor: <a href="{% url 'recepty:detailkuchare' recept.autor.id %}"> {{ recept.autor }}</a></h3>
+<h3>Chod: <a href="{% url 'recepty:detailchodu' recept.chod.id %}"> {{ recept.chod.nazev }}</a></h3>
+<h3>Ingredience: {{ recept.ingredience }}</h3>
+<h3>Postup: {{ recept.postup }}</h3>
+<br>
+
+<h1>Hodnoceni Receptu: {{ recept.hodnoceni }}</h1>
+
+
+{% if all_komentare %}
+    <ul>
+        {% for komentar in all_komentare %}
+        <h4>{{ komentar.nadpis }} &nbsp  &nbsp  &nbsp  &nbsp {{ komentar.autor }}</h4>
+            <li>{{ komentar.text }}</li>
+            <li>{{ komentar.publikovano }}</li>
+        <br>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+{% if user.is_authenticated %}
+<h1>Přidej komentář</h1>
+<form method="POST" class="post-form">
+ {% csrf_token %}
+ {{ form1.as_p }}
+ <button type="submit" name="funkce_1" class="save btn btn-default">Přidej komentář</button>
+</form>
+
+
+<h1>Hodnocení receptu</h1>
+<form method="POST" class="post-form">
+ {% csrf_token %}
+ {{ form2.as_p }}
+ <button type="submit" name="funkce_2" class="save btn btn-default">Hodnotit</button>
+</form>
+
+{% else %}
+<h5>Musíte být přihlášený pro přídávání komentářů a hodnocení</h5>
+{% endif %}
+
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+
+
+{% endblock %}

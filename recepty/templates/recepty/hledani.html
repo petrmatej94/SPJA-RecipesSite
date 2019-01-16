@@ -1,0 +1,32 @@
+
+{% extends 'recepty/base.html' %}
+{% block title %}Vyhledávání{% endblock %}
+{% block body %}
+
+
+<h1>Vyhledavani receptu</h1>
+<br>
+		{% csrf_token %}
+		<h3>Zadejte hledaný název receptu:</h3>
+		<form method="GET">
+			<input type="text" name="hledej_recept" placeholder="Nazev receptu" value="{% if hledany_vyraz %}{{ hledany_vyraz }}{% endif %}">
+			<input type="submit" value="Search">
+		</form>
+
+
+	{% if recepty %}
+		<h2>Nalezene recepty</h2>
+	    <ul>
+	    {% for recept in recepty %}
+	        <li><a href="{% url 'recepty:detailreceptu' recept.id %}"><b>{{ recept.jmeno }}</b></a></li>
+	    {% endfor %}
+	    </ul>
+
+	{% else %}
+		{% if hledany_vyraz %}
+			<h2>Recept se jménem {{ hledany_vyraz }} nebyl nalezen</h2>
+	{% endif %}
+{% endif %}
+
+
+{% endblock %}

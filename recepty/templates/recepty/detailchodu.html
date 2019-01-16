@@ -1,0 +1,35 @@
+{% extends 'recepty/base.html' %}
+{% block title %}Detail chodu{% endblock %}
+{% block body %}
+
+
+<!--<img src="{{ kuchar.fotka }}">-->
+
+<h1>{{ chod.nazev }}</h1>
+
+
+<h2>Recepty tohoto chodu:</h2>
+{% if all_recepty %}
+    <ul>
+        {% for recept in all_recepty %}
+        <h4><a href="{% url 'recepty:detailreceptu' recept.id %}">{{ recept.jmeno }}</a></h4>
+        <li>Hodnocení: {{ recept.hodnoceni }}</li>
+        <li>Datum zvěřejnění: {{ recept.publikovano }}</li>
+        <br>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+
+
+
+
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+
+
+{% endblock %}

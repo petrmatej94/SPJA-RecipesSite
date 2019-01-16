@@ -1,0 +1,23 @@
+{% extends 'recepty/base.html' %}
+{% block title %}Detail článku{% endblock %}
+{% block body %}
+
+
+<!--<img src="{{ kuchar.fotka }}">-->
+
+<h1>{{ clanek.nadpis }}</h1>
+<h3>Autor: <a href="{% url 'recepty:detailkuchare' clanek.autor.id %}"> {{ clanek.autor }}</a></h3>
+<br>
+<h5>{{ clanek.text }}</h5>
+
+
+
+
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+
+
+{% endblock %}

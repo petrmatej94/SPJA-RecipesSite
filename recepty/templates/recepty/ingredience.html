@@ -1,0 +1,20 @@
+{% extends 'recepty/base.html' %}
+{% block title %}Seznam ingrediencí{% endblock %}
+{% block body %}
+
+
+<h1>Vaření podle ingrediencí</h1>
+
+{% if all_ingredience %}
+    <ul>
+        {% for ingredience in all_ingredience %}
+        <li><a href="">{{ ingredience.nazev }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>Nejsou ingredience</h3>
+{% endif %}
+
+
+
+{% endblock %}

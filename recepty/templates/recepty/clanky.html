@@ -1,0 +1,25 @@
+
+
+{% extends 'recepty/base.html' %}
+{% block title %}Seznam článků{% endblock %}
+{% block body %}
+
+
+<h1>Články:</h1>
+
+{% if all_clanky %}
+    <ul>
+        {% for clanek in all_clanky %}
+        <li><a href="{% url 'recepty:detailclanku' clanek.id %}">{{ clanek.nadpis }}</a></li>
+        <li2>&nbsp &nbsp - Napsal <a href="{% url 'recepty:detailkuchare' clanek.autor.id %}">{{ clanek.autor }}</a>
+            &nbsp &nbsp &nbsp &nbsp{{ clanek.publikovano }}</li2>
+        <br>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>Nejsou články</h3>
+{% endif %}
+
+
+
+{% endblock %}

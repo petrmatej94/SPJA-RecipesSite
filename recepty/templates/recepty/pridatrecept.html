@@ -1,0 +1,15 @@
+{% extends 'recepty/base.html' %}
+{% block title %}Přidání receptu{% endblock %}
+
+{% block body %}
+
+     <h1>Nový recept</h1>
+     <form method="POST" class="post-form">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <input id="id_image" type="file" class="" name="fotka">
+         <br>
+         <button type="submit" class="save btn btn-default">Přidej recept</button>
+     </form>
+
+{% endblock %}
